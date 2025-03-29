@@ -1,48 +1,43 @@
 #include <stdio.h>
-#include <string.h>
-
-// Definindo uma estrutura para a carta do Super Trunfo
-typedef struct {
-    char nome[100];      // Nome da cidade 
-    long long populacao; // População da cidade 
-    double area;         // Área em km²
-    double pib;          // PIB da cidade ou país
-    double densidade;    // Densidade populacional (calculada automaticamente)
-    double pib_per_capita; // PIB per capita (calculado automaticamente)
-} Carta;
-
-// Função para calcular densidade populacional e PIB per capita
-void calcularIndicadores(Carta *carta) {
-    carta->densidade = carta->populacao / carta->area;
-    carta->pib_per_capita = carta->pib / carta->populacao;
-}
-
-// Função para exibir os detalhes da carta
-void exibirCarta(Carta carta) {
-    printf("Carta: %s\n", carta.nome);
-    printf("População: %lld\n", carta.populacao);
-    printf("Área: %.2f km²\n", carta.area);
-    printf("PIB: R$ %.2f\n", carta.pib);
-    printf("Densidade Populacional: %.2f pessoas por km²\n", carta.densidade);
-    printf("PIB per Capita: R$ %.2f\n\n", carta.pib_per_capita);
-}
 
 int main() {
-    // Criando algumas cartas de exemplo
-    Carta carta1 = {"Cidade A", 1000000, 500.0, 5000000000.0};
-    Carta carta2 = {"Cidade B", 2000000, 800.0, 10000000000.0};
-    
-    
-    // Calculando a densidade e o PIB per capita para cada carta
-    calcularIndicadores(&carta1);
-    calcularIndicadores(&carta2);
-    
-    
-    // Exibindo as cartas
-    printf("Detalhes das Cartas do Super Trunfo:\n\n");
-    exibirCarta(carta1);
-    exibirCarta(carta2);
-    
-    
+    // Dados das cartas
+    long long pop1 = 211000000, pop2 = 331000000;
+    double area1 = 8515767.0, area2 = 9833517.0, pib1 = 2065.0, pib2 = 21138.0;
+    int pontos1 = 0, pontos2 = 0;
+
+    // Cálculando de Densidade Populacional e PIB per Capita
+    double dens1 = pop1 / area1, dens2 = pop2 / area2;
+    double pibPerCapita1 = pib1 * 1e9 / pop1, pibPerCapita2 = pib2 * 1e9 / pop2;
+    double superPoder1 = dens1 * pibPerCapita1, superPoder2 = dens2 * pibPerCapita2;
+
+    // Comparações
+    printf("População: ");
+    if (pop1 > pop2) { printf("Carta 1 venceu (1)\n"); pontos1++; } else { printf("Carta 2 venceu (1)\n"); pontos2++; }
+
+    printf("Área: ");
+    if (area1 > area2) { printf("Carta 1 venceu (1)\n"); pontos1++; } else { printf("Carta 2 venceu (1)\n"); pontos2++; }
+
+    printf("PIB: ");
+    if (pib1 > pib2) { printf("Carta 1 venceu (1)\n"); pontos1++; } else { printf("Carta 2 venceu (1)\n"); pontos2++; }
+
+    printf("Pontos Turísticos: ");
+    if (2000 > 3000) { printf("Carta 1 venceu (1)\n"); pontos1++; } else { printf("Carta 2 venceu (1)\n"); pontos2++; }
+
+    printf("Densidade Populacional: ");
+    if (dens1 > dens2) { printf("Carta 1 venceu (1)\n"); pontos1++; } else { printf("Carta 2 venceu (1)\n"); pontos2++; }
+
+    printf("PIB per Capita: ");
+    if (pibPerCapita1 > pibPerCapita2) { printf("Carta 1 venceu (1)\n"); pontos1++; } else { printf("Carta 2 venceu (1)\n"); pontos2++; }
+
+    printf("Super Poder: ");
+    if (superPoder1 > superPoder2) { printf("Carta 1 venceu (1)\n"); pontos1++; } else { printf("Carta 2 venceu (1)\n"); pontos2++; }
+
+    // Resultado final
+    printf("\nResultado final: ");
+    if (pontos1 > pontos2) printf("Carta 1 venceu com %d pontos!\n", pontos1);
+    else if (pontos1 < pontos2) printf("Carta 2 venceu com %d pontos!\n", pontos2);
+    else printf("Empate!\n");
+
     return 0;
 }
